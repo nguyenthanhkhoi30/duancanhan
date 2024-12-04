@@ -1,0 +1,608 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/* Đặt lại padding, margin và box-sizing mặc định cho tất cả các phần tử */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Đặt font-family và định nghĩa các biến tùy chỉnh */
+html {
+  text-transform: Arial, Helvetica, sans-serif;
+  --xanh_dam-color: #040449; /* Màu xanh đậm */
+  --chu-color: antiquewhite; /* Màu chữ nhẹ */
+}
+
+/* Đặt màu nền cho thẻ body */
+body {
+  background-color: rgba(112, 112, 112, 0.5); /* Màu xám nhạt với độ mờ 50% */
+}
+
+#main {
+  /* Kiểu dáng cho container chính (nếu có) */
+}
+
+/* Kiểu dáng cho nút bấm */
+.btn {
+  color: #fff; /* Màu chữ trắng */
+  background-color: #009688; /* Màu nền xanh lá cây */
+  padding: 10px 20px; /* Khoảng đệm xung quanh nút bấm */
+  border: none; /* Loại bỏ viền mặc định */
+  cursor: pointer; /* Đổi con trỏ chuột thành con trỏ khi hover */
+  border-radius: 5px; /* Bo tròn các góc */
+  text-transform: uppercase; /* Chữ in hoa */
+  font-size: 16px; /* Kích thước chữ */
+}
+
+.btn:hover {
+  opacity: 0.8; /* Mờ dần khi hover */
+}
+
+/* Kiểu dáng cho Modal (ẩn mặc định) */
+.modal {
+  position: fixed; /* Vị trí cố định so với viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Nền đen mờ */
+  display: none; /* Ẩn mặc định */
+  align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+  justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
+  z-index: 1000; /* Thứ tự xếp lớp */
+}
+
+/* Kiểu dáng cho container của Modal */
+.modal-container {
+  background: white; /* Nền trắng */
+  width: 400px; /* Chiều rộng cố định */
+  padding: 20px; /* Khoảng đệm bên trong container */
+  border-radius: 8px; /* Bo tròn các góc */
+  position: relative; /* Vị trí tương đối cho các phần tử con */
+}
+
+/* Kiểu dáng cho nút đóng của Modal */
+.modal-close {
+  position: absolute; /* Vị trí tuyệt đối trong container của Modal */
+  top: 10px; /* Cách trên 10px */
+  right: 10px; /* Cách phải 10px */
+  font-size: 20px; /* Kích thước chữ lớn */
+  cursor: pointer; /* Đổi con trỏ chuột thành con trỏ khi hover */
+  color: #999; /* Màu xám */
+}
+
+.modal-close:hover {
+  color: red; /* Màu đỏ khi hover */
+}
+
+/* Kiểu dáng cho header và body của Modal */
+.modal-header > h2 {
+  margin-bottom: 20px; /* Khoảng cách dưới của header */
+  text-align: center; /* Căn giữa chữ header */
+}
+
+.modal-body {
+  display: flex; /* Bố cục flexbox */
+  flex-direction: column; /* Bố cục theo chiều dọc */
+}
+
+/* Kiểu dáng cho nhãn form của Modal */
+.modal-label {
+  margin-bottom: 8px; /* Khoảng cách dưới của nhãn */
+  font-size: 14px; /* Kích thước chữ nhỏ */
+  font-weight: bold; /* Chữ đậm */
+}
+
+/* Kiểu dáng cho ô nhập liệu của Modal */
+.modal-input {
+  padding: 10px; /* Khoảng đệm trong ô nhập liệu */
+  margin-bottom: 16px; /* Khoảng cách dưới của ô nhập liệu */
+  border: 1px solid #ccc; /* Viền màu xám nhạt */
+  border-radius: 5px; /* Bo tròn các góc */
+}
+
+/* Kiểu dáng cho nút gửi */
+.gui-tickets {
+  background-color: #009688; /* Nền xanh lá cây */
+  color: white; /* Màu chữ trắng */
+  padding: 10px; /* Khoảng đệm trong nút */
+  border: none; /* Loại bỏ viền mặc định */
+  cursor: pointer; /* Đổi con trỏ chuột thành con trỏ khi hover */
+  text-transform: uppercase; /* Chữ in hoa */
+  border-radius: 5px; /* Bo tròn các góc */
+}
+
+.gui-tickets:hover {
+  opacity: 0.9; /* Mờ dần khi hover */
+}
+
+/* Kiểu dáng cho Modal khi hiển thị trên màn hình nhỏ */
+@media (max-width: 768px) {
+  .modal-container {
+    width: 90%; /* Chiều rộng chiếm 90% viewport */
+  }
+}
+
+/* Các lớp tiện ích cho màu chữ và căn chỉnh */
+.text-white {
+  color: #ccc !important; /* Màu chữ xám nhạt */
+}
+
+.text-content {
+  text-align: center !important; /* Căn giữa chữ */
+}
+
+.mt-8 {
+  margin-top: 8px !important; /* Khoảng cách trên 8px */
+}
+
+.mt-16 {
+  margin-top: 16px !important; /* Khoảng cách trên 16px */
+}
+
+/* Lớp tiện ích để di chuyển phần tử sang phải */
+.pull-right {
+  float: right !important; /* Di chuyển phần tử sang phải */
+}
+
+/* Kiểu dáng cho nút sử dụng các biến tùy chỉnh */
+.btn {
+  color: var(--chu-color); /* Màu chữ nhẹ */
+  background-color: var(--xanh_dam-color); /* Nền màu xanh đậm */
+  padding: 4px 25px; /* Khoảng đệm xung quanh nút */
+  display: inline-block; /* Hiển thị inline-block */
+  margin-top: 10px; /* Khoảng cách trên 10px */
+  border: none; /* Loại bỏ viền mặc định */
+}
+
+.btn:hover {
+  cursor: pointer; /* Đổi con trỏ chuột thành con trỏ khi hover */
+  color: var(--xanh_dam-color); /* Màu chữ xanh đậm khi hover */
+  background-color: var(--chu-color); /* Nền màu nhẹ khi hover */
+}
+
+/* Kiểu dáng cho dòng với khoảng cách âm để căn đều */
+.row {
+  margin-left: -8px; /* Khoảng cách trái âm */
+  margin-right: -8px; /* Khoảng cách phải âm */
+}
+
+.row::after {
+  content: "";
+  display: block;
+  clear: both; /* Xóa căn lề */
+}
+
+/* Kiểu dáng cho cột trong bố cục lưới */
+.col {
+  float: left; /* Di chuyển cột sang trái */
+  padding-left: 8px; /* Khoảng đệm trong cột */
+  padding-right: 8px; /* Khoảng đệm trong cột */
+}
+
+.col-full {
+  width: 100%; /* Chiều rộng 100% */
+}
+
+.col-half {
+  width: 50%; /* Chiều rộng 50% */
+}
+
+.col-third {
+  width: 33.33333%; /* Chiều rộng 1/3 */
+}
+
+/* Xóa căn lề */
+.clear {
+  clear: both; /* Xóa căn lề trái và phải */
+}
+
+/* Kiểu dáng cho header */
+#header {
+  height: 160px; /* Chiều cao cố định */
+  background-color: var(--xanh_dam-color); /* Nền màu xanh đậm */
+  position: fixed; /* Vị trí cố định so với viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; /* Thứ tự xếp lớp */
+}
+
+/* Kiểu dáng cho container logo */
+.logo-team {
+  padding: 24px 0px 0px 100px; /* Khoảng đệm trong container logo */
+  display: flex; /* Bố cục flexbox */
+  align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+  gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+/* Kiểu dáng cho hình ảnh logo */
+.logo-img {
+  width: 8%; /* Chiều rộng cố định */
+  border-radius: 15%; /* Bo tròn các góc */
+  object-fit: cover; /* Giữ tỉ lệ khung hình */
+}
+
+/* Kiểu dáng cho tiêu đề */
+h1 {
+  color: #ccc; /* Màu chữ xám nhạt */
+  font-size: 25px; /* Kích thước chữ */
+}
+
+.RESCUE {
+  color: #ff3700; /* Màu đỏ */
+}
+
+/* Kiểu dáng cho điều hướng */
+#nav {
+  display: inline-block; /* Hiển thị inline-block */
+}
+
+#nav, .subnav {
+  list-style-type: none; /* Loại bỏ dấu đầu dòng */
+}
+
+#nav li:hover .subnav {
+
+  display: block;
+}
+
+
+/*  */
+
+#nav > li:hover > a {
+  color:var(--xanh_dam-color);
+  background-color: var(--chu-color);
+}
+
+.subnav > li:hover{
+  color:var(--xanh_dam-color);
+  background-color: var(--chu-color);
+}
+
+.li1 {
+  padding-left: 200px;
+}
+
+#nav > li {
+  display: inline-block;
+  
+}
+
+
+#nav > li > a {
+  color: var(--chu-color);
+  text-transform: uppercase;
+}
+
+#nav  li  a {
+  text-decoration: none;
+  line-height: 80px;
+  padding: 0px 24px;
+  display: inline-block;
+}
+
+#nav .subnav {
+  display: none;
+  position: absolute;
+
+  min-width: 160px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0 , 0, 0, 0.3);
+}
+
+#nav .subnav a {
+  color: #000;
+  padding: 0px 16px;
+  line-height: 40px;
+}
+
+#header .search-container {
+  float: right;
+  line-height: 160px;
+}
+
+.search-container {
+  position: relative;
+  width: 400px;
+}
+
+/* Search input field styling */
+.search-input {
+  width: 100%;
+  padding: 10px 20px 10px 40px; /* Left padding for the icon */
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Search icon styling */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 18px;
+}
+.search-container {
+  display: inline-block;
+  right: 0;
+}
+
+#slider {
+  position: relative;
+  margin-top: 80px;
+  padding-top: 50%;
+  background: url('/Lập\ Nghiệp/RES/background.jpg') top center / cover no-repeat;
+  
+}
+
+#slider .text-content {
+  position: absolute;
+  bottom: 50px;
+  color:--chu-color;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#slider .text-heading {
+  color: var(--chu-color);
+  background-color: rgba(137, 137, 137, 0.3);
+  font-weight: 500px;
+  font-size: 30px;
+  letter-spacing: 3.5 px;
+}
+
+#slider .text-heading1 {
+  color: var(--chu-color);
+  background-color: rgba(137, 137, 137, 0.3);
+  font-size: 25px;
+  margin-top: 25px;
+}
+
+#content .content-section {
+  width: 800px;
+  padding: 64px 0px 112px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#content .section-heading {
+  color: var(--chu-color);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  
+}
+
+#content .section-sub-heading {
+  font-size: 15px;
+  margin-top: 25px;
+  font-style: italic;
+}
+
+#content .section-heading,
+#content .section-sub-heading {
+  text-align: center;
+}
+
+#content .about-text {
+  margin-top: 25px;
+  font-size: 17px;
+  text-align: justify;
+  line-height: 1.7;
+}
+
+#content .members-list {
+  margin-top: 48px;
+  overflow: hidden;
+}
+
+#content .members-item {
+  text-align: center;
+}
+
+
+#content .members-name {
+  color: var(--chu-color);
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+hr {
+  margin-top: 5px;
+  color: var(--chu-color);
+}
+
+#content .members-name1 {
+  font-style: italic;
+  color: var(--xanh_dam-color);
+  margin-top: 5px;
+}
+
+#content .members-avt {
+  margin-top: 15px;
+  width: 154px;
+  border-radius: 4px;
+  border: 2px solid var(--chu-color);
+}
+
+
+.dichvu-section {
+  background-color: var(--xanh_dam-color);
+}
+
+.xemthem{
+  padding-top: 40px;
+}
+
+.them1:hover {
+  background-color: rgb(114, 114, 113);
+  color: var(--chu-color);
+}
+.them1 {
+  background-color: var(--chu-color);
+  color: var(--xanh_dam-color);
+  padding: 5px 15px;
+}
+
+.tickets-list {
+  background-color: #fff;
+  margin-top: 25px;
+  list-style: none;
+}
+.tickets-list li {
+  color: #757575;
+  font-size: 15px;
+  padding: 11px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.nhan-vien {
+  font-size: 20px;
+  text-transform: uppercase;
+  color:red;
+}
+
+.tickets-list .chu {
+  color:#fff;
+  background-color: red;
+  padding: 2px 5px ;
+  margin-left: 20px;
+
+}
+
+.tickets-list .them {
+  float: right;
+  text-align: center;
+  line-height: 23px;
+  width: 50px;
+  height: 25px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  margin-top: -3px;
+}
+
+.tickets-list > li > a:hover {
+  background-color: #bebebe;
+  color:#000;
+}
+.tickets-list > li > a {
+  text-decoration: none;
+}
+
+
+.service-list {
+  margin-top: 32px;
+
+}
+
+
+.service-img {
+  width: 100%;
+  display: block;
+}
+
+.service-img:hover {
+  opacity: 0.7;
+}
+
+.service-body {
+  background-color: var(--chu-color);
+  color: var(--xanh_dam-color);
+  padding: 16px;
+}
+
+.service-heading {
+  font-size: 15px;
+  font-weight: 600;
+
+}
+
+.service-time {
+  margin-top: 15px;
+  color: #75757575;
+
+}
+
+.service-dsc {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+
+
+
+them1
+
+
+.service-body > a {
+  text-decoration: none;
+}
+
+.service-body > a:hover {
+  background-color:#d9d9d9;
+  color: #000000;
+}
+
+
+
+/* đầu contact */
+.contact-content {
+  margin-top: 48px;
+}
+
+.contact-info {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.contact-info i[class*="ti-"] {
+  width: 30px;
+  display: inline-block;
+}
+
+.contact-form {
+  font-size: 15px;
+}
+
+.contact-form .form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  outline: none;
+}
+
+
+
+/* cuối contact */
+
+/* đầu map */
+.map-section img {
+  width: 100%;
+
+}
+/* cuối map */
+
+
+.color1 {
+  color: #000;
+}
+
+
+
+
+
+
+
+
+

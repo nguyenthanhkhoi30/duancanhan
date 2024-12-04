@@ -1,13 +1,22 @@
 {
   "files": {
-    "main.css": "/duancanhan/static/css/main.d0968b1d.css",
-    "main.js": "/duancanhan/static/js/main.4604a79d.js",
+    "main.css": "/duancanhan/static/css/main.bf85e386.css",
+    "main.js": "/duancanhan/static/js/main.a7a81bf7.js",
+    "static/media/background.jpg": "/duancanhan/static/media/background.a9da8c114701e51e0ee4.jpg",
+    "static/media/tvn_dang.jpg": "/duancanhan/static/media/tvn_dang.ede254d10e29c3a1bbf0.jpg",
+    "static/media/dich_vu1.jpg": "/duancanhan/static/media/dich_vu1.ffa838a73537d170b26d.jpg",
+    "static/media/dich_vu3.jpg": "/duancanhan/static/media/dich_vu3.17edb2e5c2f0393b5e6c.jpg",
+    "static/media/tvn_chien.jpg": "/duancanhan/static/media/tvn_chien.4e2bf5464fd1c02d1dae.jpg",
+    "static/media/dich_vu2.jpg": "/duancanhan/static/media/dich_vu2.10fe28597e635fa73ca9.jpg",
+    "static/media/tvn_khoi.jpg": "/duancanhan/static/media/tvn_khoi.453402ffdec3fe080e87.jpg",
+    "static/media/bando.jpg": "/duancanhan/static/media/bando.0925d96589ff7938b6fc.jpg",
+    "static/media/logo-img.jpg": "/duancanhan/static/media/logo-img.5715fb0ed2cb7397982f.jpg",
     "index.html": "/duancanhan/index.html",
-    "main.d0968b1d.css.map": "/duancanhan/static/css/main.d0968b1d.css.map",
-    "main.4604a79d.js.map": "/duancanhan/static/js/main.4604a79d.js.map"
+    "main.bf85e386.css.map": "/duancanhan/static/css/main.bf85e386.css.map",
+    "main.a7a81bf7.js.map": "/duancanhan/static/js/main.a7a81bf7.js.map"
   },
   "entrypoints": [
-    "static/css/main.d0968b1d.css",
-    "static/js/main.4604a79d.js"
+    "static/css/main.bf85e386.css",
+    "static/js/main.a7a81bf7.js"
   ]
 }
